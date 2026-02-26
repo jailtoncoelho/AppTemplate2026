@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.jailton.androidapptemplate"
-    compileSdk = 36
+    namespace = "com.ifpr.androidapptemplate"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.jailton.androidapptemplate"
+        applicationId = "com.ifpr.androidapptemplate"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
