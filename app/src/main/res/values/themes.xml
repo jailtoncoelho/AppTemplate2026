@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.FixPro.Login" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/fixpro_accent_teal</item>
+        <item name="colorPrimaryVariant">@color/fixpro_deep_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/fixpro_dark_bg</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
 </resources>

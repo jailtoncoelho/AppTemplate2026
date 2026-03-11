@@ -5,10 +5,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.ifpr.androidapptemplate.R
 
-
-class CadastroUsuarioActivity  : AppCompatActivity() {
+class CadastroUsuarioActivity : AppCompatActivity() {
     private lateinit var textCadastroUsuarioTitle: TextView
     private lateinit var registerNameEditText: EditText
     private lateinit var registerEmailEditText: EditText
@@ -19,6 +19,7 @@ class CadastroUsuarioActivity  : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_cadastro_usuario)
 
         textCadastroUsuarioTitle = findViewById(R.id.textCadastroUsuarioTitle)

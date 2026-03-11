@@ -3,4 +3,20 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="login_welcome">Bem-vindo de\nvolta!</string>
+    <string name="login_subtitle">Conecte-se ao melhor serviço perto de você</string>
+    <string name="hint_email">Seu email</string>
+    <string name="hint_password">Sua senha</string>
+    <string name="hint_name">Nome completo</string>
+    <string name="hint_confirm_password">Confirmar senha</string>
+    <string name="btn_login">Entrar</string>
+    <string name="btn_register">Criar minha conta</string>
+    <string name="forgot_password">Esqueceu a senha?</string>
+    <string name="or_divider">ou continue com</string>
+    <string name="link_register">Não tem conta? Cadastre-se</string>
+    <string name="register_title">Crie sua\nconta</string>
+    <string name="register_subtitle">Junte-se a milhares de profissionais e clientes</string>
+    <string name="link_login">Já tem conta? Entrar</string>
+    <string name="google_login">Google</string>
+    <string name="terms_text">Ao continuar, você concorda com nossos Termos de Uso e Política de Privacidade</string>
 </resources>

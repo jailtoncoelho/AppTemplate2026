@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="purple_200">#FF6B35</color>
+    <color name="purple_500">#FF6B35</color>
+    <color name="purple_700">#121212</color>
+    <color name="teal_200">#FFB347</color>
+    <color name="teal_700">#FF6B35</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="fixpro_dark_bg">#0E0E0E</color>
+    <color name="fixpro_deep_blue">#121212</color>
+    <color name="fixpro_mid_blue">#1E1E2E</color>
+    <color name="fixpro_accent_teal">#FF6B35</color>
+    <color name="fixpro_vibrant_cyan">#FFB347</color>
+    <color name="fixpro_light_teal">#FFCC80</color>
+    <color name="fixpro_gradient_start">#121212</color>
+    <color name="fixpro_gradient_center">#181828</color>
+    <color name="fixpro_gradient_end">#1E1E2E</color>
+    <color name="fixpro_btn_start">#FF6B35</color>
+    <color name="fixpro_btn_end">#FFB347</color>
+    <color name="fixpro_input_bg">#1C1C28</color>
+    <color name="fixpro_input_stroke">#2A2A3A</color>
+    <color name="fixpro_input_stroke_focused">#FF6B35</color>
+    <color name="fixpro_text_white">#FFFFFF</color>
+    <color name="fixpro_text_hint">#6B6B80</color>
+    <color name="fixpro_text_secondary">#9E9EB0</color>
+    <color name="fixpro_divider">#2A2A3A</color>
+    <color name="fixpro_link">#FFB347</color>
 </resources>

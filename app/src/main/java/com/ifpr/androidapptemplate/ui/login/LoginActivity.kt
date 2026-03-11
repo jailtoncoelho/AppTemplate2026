@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import com.ifpr.androidapptemplate.R
 import com.ifpr.androidapptemplate.ui.usuario.CadastroUsuarioActivity
 
@@ -23,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_login)
 
         emailEditText = findViewById(R.id.edit_text_email)
@@ -30,12 +32,8 @@ class LoginActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.button_login)
         registerLink = findViewById(R.id.registerLink)
 
-        val registerLink: TextView = findViewById(R.id.registerLink)
         registerLink.setOnClickListener {
-            val intent: Intent = Intent(
-                applicationContext,
-                CadastroUsuarioActivity::class.java
-            )
+            val intent = Intent(applicationContext, CadastroUsuarioActivity::class.java)
             startActivity(intent)
         }
     }
