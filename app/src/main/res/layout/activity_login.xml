@@ -10,13 +10,24 @@
 
     tools:context=".ui.login.LoginActivity">
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="#ff1e27"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="701dp"
+         />
+
     <TextView
         android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:autoText="true"
         android:background="#F6F3F3"
+        android:minHeight="48dp"
         android:text="Login de Usuário"
         android:textColor="#0F0E0E"
         android:textSize="24sp"
@@ -76,5 +87,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_login" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="259dp"
+        android:layout_height="274dp"
+        app:srcCompat="@mipmap/pokebola_foreground"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="-35dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="#ff1e27"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp"
+        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
