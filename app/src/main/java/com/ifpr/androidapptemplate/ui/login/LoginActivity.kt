@@ -2,13 +2,12 @@ package com.ifpr.androidapptemplate.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.common.SignInButton
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -22,40 +21,44 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
     private lateinit var registerLink: TextView
-    private lateinit var btnGoogleSignIn: SignInButton
     private lateinit var firebaseAuth: FirebaseAuth
 
     companion object {
-        private const val RC_SIGN_IN = 9001
-        private const val TAG = "signInWithEmail"
+        private const val TAG = "Login"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // Inicializa Firebase
         FirebaseApp.initializeApp(this)
-
-        // Inicializa o Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
 
+        // ⚠️ IMPORTANTE: esses IDs precisam ser IGUAIS aos do XML
         emailEditText = findViewById(R.id.edit_text_email)
         passwordEditText = findViewById(R.id.edit_text_password)
         loginButton = findViewById(R.id.button_login)
         registerLink = findViewById(R.id.registerLink)
 
-        val registerLink: TextView = findViewById(R.id.registerLink)
+        // Ir para cadastro
         registerLink.setOnClickListener {
-            val intent: Intent = Intent(
-                applicationContext,
-                CadastroUsuarioActivity::class.java
-            )
+            val intent = Intent(this, CadastroUsuarioActivity::class.java)
             startActivity(intent)
         }
 
+        // Botão login
         loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
+
+            // Validação simples
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             signIn(email, password)
         }
     }
@@ -64,12 +67,11 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Log.d(TAG, "signInWithEmail:success")
+                    Log.d(TAG, "Login sucesso")
                     updateUI(firebaseAuth.currentUser)
                 } else {
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Log.e(TAG, "Erro no login", task.exception)
+                    Toast.makeText(this, "Erro ao fazer login", Toast.LENGTH_SHORT).show()
                     updateUI(null)
                 }
             }
@@ -77,15 +79,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            // Navegue para a proxima atividade
-            val intent = Intent(applicationContext, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            finish() // fecha tela de login
         } else {
-            Toast.makeText(
-                applicationContext,
-                "Email ou senha incorretos",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this, "Email ou senha incorretos", Toast.LENGTH_SHORT).show()
         }
     }
 }
