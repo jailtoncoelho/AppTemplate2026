@@ -15,17 +15,16 @@
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:background="#ff1e27"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="701dp"
-         />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:autoText="true"
+
         android:background="#F6F3F3"
         android:minHeight="48dp"
         android:text="Login de Usuário"
@@ -45,8 +44,9 @@
         android:clickable="false"
         android:foregroundTint="#BD19191D"
         android:hint="Digite seu Email"
+        android:textColorHint="@color/black"
         android:inputType="textEmailAddress"
-        android:textColor="#181616"
+        android:textColor="#090909"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +58,8 @@
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:hint="Digite sua senha"
+        android:textColor="#090909"
+        android:textColorHint="@color/black"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -68,10 +70,11 @@
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@android:color/holo_red_dark"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
 
@@ -79,14 +82,13 @@
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="152dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Cadastre-se"
         android:textColor="#0F0E0E"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_login" />
+        app:layout_constraintBottom_toBottomOf="@+id/button_login"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -106,6 +108,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-3dp"
         tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
