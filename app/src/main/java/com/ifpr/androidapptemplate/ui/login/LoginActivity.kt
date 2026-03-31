@@ -2,9 +2,10 @@ package com.ifpr.androidapptemplate.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.ifpr.androidapptemplate.MainActivity
 import com.ifpr.androidapptemplate.R
 import com.ifpr.androidapptemplate.ui.usuario.CadastroUsuarioActivity
@@ -15,12 +16,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
     private lateinit var registerLink: TextView
-    private lateinit var btnGoogleSignIn: SignInButton
-    private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var firebaseAuth: FirebaseAuth
 
-    companion object {
-        }
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,13 +30,22 @@ class LoginActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.button_login)
         registerLink = findViewById(R.id.registerLink)
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestEmail()
-            .build()
+        // Botão de cadastro
+        registerLink.setOnClickListener {
+            startActivity(Intent(this, CadastroUsuarioActivity::class.java))
+        }
 
-        googleSignInClient = GoogleSignIn.getClient(this, gso)
+        // Botão de login
+        loginButton.setOnClickListener {
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
-        btnGoogleSignIn.setOnClickListener {
+            if (email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            signIn(email, password)
         }
     }
 
@@ -49,19 +55,15 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     updateUI(firebaseAuth.currentUser)
                 } else {
-            }
-    }
-
-
-        firebaseAuth.signInWithCredential(credential)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    updateUI(firebaseAuth.currentUser)
-                } else {
+                    Toast.makeText(this, "Erro ao fazer login", Toast.LENGTH_SHORT).show()
                 }
             }
     }
 
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
