@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:fitsSystemWindows="true"
+    android:background="#FBF6F6"
+    tools:context=".ui.usuario.CadastroUsuarioActivity">
+
+
+    <TextView
+        android:id="@+id/textCadastroUsuarioTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Cadastro de Usuário"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/registerNameEditText"
+        android:layout_width="225dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:hint="Nome"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textCadastroUsuarioTitle" />
+
+    <EditText
+        android:id="@+id/registerEmailEditText"
+        android:layout_width="217dp"
+        android:layout_height="38dp"
+        android:hint="Email"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerNameEditText" />
+
+    <EditText
+        android:id="@+id/registerPasswordEditText"
+        android:layout_width="238dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="8dp"
+        android:hint="Senha"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerEmailEditText" />
+
+    <EditText
+        android:id="@+id/registerConfirmPasswordEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Confirmar Senha"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/registerPasswordEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/salvarButton"
+        android:layout_width="262dp"
+        android:layout_height="42dp"
+        android:text="Cadastrar"
+        android:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordEditText" />
+
+    <Button
+        android:id="@+id/sairButton"
+        android:layout_width="255dp"
+        android:layout_height="37dp"
+        android:text="Sair"
+        android:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/salvarButton" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="253dp"
+        android:layout_height="229dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginBottom="512dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/pokebola_sem_borda_branca" />
+</androidx.constraintlayout.widget.ConstraintLayout>
