@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base: mesma leveza do login, ângulo diferente (vertical vs diagonal) -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="linear"
+                android:startColor="#12121C"
+                android:centerColor="#161624"
+                android:endColor="#1A1A2A"
+                android:angle="180" />
+        </shape>
+    </item>
+    <!-- Glow quente — topo centro -->
+    <item
+        android:top="-80dp"
+        android:left="30dp"
+        android:right="30dp">
+        <shape android:shape="oval">
+            <size android:width="300dp" android:height="250dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="150dp"
+                android:startColor="#14FF6B35"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+    <!-- Glow suave — baixo direita -->
+    <item
+        android:bottom="-60dp"
+        android:right="-40dp">
+        <shape android:shape="oval">
+            <size android:width="220dp" android:height="220dp" />
+            <gradient
+                android:type="radial"
+                android:gradientRadius="110dp"
+                android:startColor="#0CFFB347"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+</layer-list>

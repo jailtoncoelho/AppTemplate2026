@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_login"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:context=".ui.usuario.CadastroUsuarioActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="28dp"
+        android:paddingTop="80dp"
+        android:paddingBottom="32dp">
+
+        <FrameLayout
+            android:id="@+id/register_logo_container"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_logo_glow" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:contentDescription="FixPro"
+                android:src="@drawable/fixpro_logo" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textCadastroUsuarioTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:letterSpacing="0.01"
+            android:lineSpacingExtra="4dp"
+            android:text="Crie sua\nconta"
+            android:textAlignment="center"
+            android:textColor="@color/fixpro_text_white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_logo_container" />
+
+        <TextView
+            android:id="@+id/text_register_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="Junte-se a milhares de profissionais e clientes"
+            android:textColor="@color/fixpro_text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textCadastroUsuarioTitle" />
+
+        <LinearLayout
+            android:id="@+id/register_form_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_glass_card"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_register_subtitle">
+
+            <EditText
+                android:id="@+id/registerNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/selector_input_field"
+                android:drawableStart="@drawable/ic_person"
+                android:drawablePadding="14dp"
+                android:hint="Nome completo"
+                android:inputType="textPersonName"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/fixpro_text_white"
+                android:textColorHint="@color/fixpro_text_hint"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/registerEmailEditText"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/selector_input_field"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="14dp"
+                android:hint="Seu email"
+                android:inputType="textEmailAddress"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/fixpro_text_white"
+                android:textColorHint="@color/fixpro_text_hint"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/registerPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/selector_input_field"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="14dp"
+                android:hint="Sua senha"
+                android:inputType="textPassword"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/fixpro_text_white"
+                android:textColorHint="@color/fixpro_text_hint"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/registerConfirmPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/selector_input_field"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="14dp"
+                android:hint="Confirmar senha"
+                android:inputType="textPassword"
+                android:paddingHorizontal="18dp"
+                android:textColor="@color/fixpro_text_white"
+                android:textColorHint="@color/fixpro_text_hint"
+                android:textCursorDrawable="@null"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/salvarButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/ripple_button_primary"
+                android:elevation="8dp"
+                android:letterSpacing="0.08"
+                android:stateListAnimator="@null"
+                android:text="Criar minha conta"
+                android:textAllCaps="false"
+                android:textColor="@color/fixpro_deep_blue"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_divider_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_form_card">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/fixpro_divider" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="16dp"
+                android:text="ou continue com"
+                android:textColor="@color/fixpro_text_hint"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/fixpro_divider" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_social_container"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_social_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_divider_container">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="Google"
+                android:src="@drawable/ic_google" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Google"
+                android:textColor="@color/fixpro_text_white"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/sairButton"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/ripple_button_secondary"
+            android:stateListAnimator="@null"
+            android:text="Já tem conta? Entrar"
+            android:textAllCaps="false"
+            android:textColor="@color/fixpro_text_white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/register_social_container" />
+
+        <TextView
+            android:id="@+id/text_terms"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:lineSpacingExtra="2dp"
+            android:text="Ao continuar, você concorda com nossos Termos de Uso e Política de Privacidade"
+            android:textColor="@color/fixpro_text_hint"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sairButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
