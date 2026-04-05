@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.ifpr.androidapptemplate.ui.usuario.PerfilUsuarioFragment"
-        android:label="@string/title_profile"
+        android:label="Perfil"
         tools:layout="@layout/fragment_perfil_usuario" />
 </navigation>

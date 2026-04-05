@@ -15,7 +15,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.GoogleAuthProvider
-import com.google.android.gms.common.SignInButton
+import android.widget.LinearLayout
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
     private lateinit var registerLink: TextView
-    private lateinit var btnGoogleSignIn: SignInButton
+    private lateinit var btnGoogleSignIn: LinearLayout
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
 
@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.edit_text_password)
         loginButton = findViewById(R.id.button_login)
         registerLink = findViewById(R.id.registerLink)
-        btnGoogleSignIn = findViewById<SignInButton>(R.id.btnGoogleSignIn)
+        btnGoogleSignIn = findViewById(R.id.btnGoogleSignIn)
 
         registerLink.setOnClickListener {
             val intent = Intent(applicationContext, CadastroUsuarioActivity::class.java)
@@ -109,8 +109,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun signInGoogle() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        // Sign out first to force the account picker to appear
+        googleSignInClient.signOut().addOnCompleteListener {
+            val signInIntent = googleSignInClient.signInIntent
+            startActivityForResult(signInIntent, RC_SIGN_IN)
+        }
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount) {
@@ -118,11 +121,9 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Login bem-sucedido, navegar para a atividade principal ou atualizar UI
                     Log.d(TAG, "signInWithGoogle:success")
                     updateUI(firebaseAuth.currentUser)
                 } else {
-                    // Tratar falha de login
                     Log.w(TAG, "signInWithGoogle:failure", task.exception)
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
@@ -140,7 +141,6 @@ class LoginActivity : AppCompatActivity() {
                 val account = task.getResult(ApiException::class.java)!!
                 firebaseAuthWithGoogle(account)
             } catch (e: ApiException) {
-                // Tratar falha de login
                 Log.w(TAG, "onActivityResult:failure", task.exception)
             }
         }

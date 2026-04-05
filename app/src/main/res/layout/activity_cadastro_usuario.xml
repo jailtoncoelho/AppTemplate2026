@@ -33,7 +33,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
-                android:contentDescription="@string/app_name"
+                android:contentDescription="FixPro"
                 android:src="@drawable/fixpro_logo" />
         </FrameLayout>
 
@@ -46,7 +46,7 @@
             android:gravity="center"
             android:letterSpacing="0.01"
             android:lineSpacingExtra="4dp"
-            android:text="@string/register_title"
+            android:text="Crie sua\nconta"
             android:textAlignment="center"
             android:textColor="@color/fixpro_text_white"
             android:textSize="30sp"
@@ -62,7 +62,7 @@
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:lineSpacingExtra="2dp"
-            android:text="@string/register_subtitle"
+            android:text="Junte-se a milhares de profissionais e clientes"
             android:textColor="@color/fixpro_text_secondary"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
                 android:background="@drawable/selector_input_field"
                 android:drawableStart="@drawable/ic_person"
                 android:drawablePadding="14dp"
-                android:hint="@string/hint_name"
+                android:hint="Nome completo"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="18dp"
                 android:textColor="@color/fixpro_text_white"
@@ -105,7 +105,7 @@
                 android:background="@drawable/selector_input_field"
                 android:drawableStart="@drawable/ic_email"
                 android:drawablePadding="14dp"
-                android:hint="@string/hint_email"
+                android:hint="Seu email"
                 android:inputType="textEmailAddress"
                 android:paddingHorizontal="18dp"
                 android:textColor="@color/fixpro_text_white"
@@ -121,7 +121,7 @@
                 android:background="@drawable/selector_input_field"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="14dp"
-                android:hint="@string/hint_password"
+                android:hint="Sua senha"
                 android:inputType="textPassword"
                 android:paddingHorizontal="18dp"
                 android:textColor="@color/fixpro_text_white"
@@ -137,7 +137,7 @@
                 android:background="@drawable/selector_input_field"
                 android:drawableStart="@drawable/ic_lock"
                 android:drawablePadding="14dp"
-                android:hint="@string/hint_confirm_password"
+                android:hint="Confirmar senha"
                 android:inputType="textPassword"
                 android:paddingHorizontal="18dp"
                 android:textColor="@color/fixpro_text_white"
@@ -154,7 +154,7 @@
                 android:elevation="8dp"
                 android:letterSpacing="0.08"
                 android:stateListAnimator="@null"
-                android:text="@string/btn_register"
+                android:text="Criar minha conta"
                 android:textAllCaps="false"
                 android:textColor="@color/fixpro_deep_blue"
                 android:textSize="16sp"
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="16dp"
-                android:text="@string/or_divider"
+                android:text="ou continue com"
                 android:textColor="@color/fixpro_text_hint"
                 android:textSize="12sp" />
 
@@ -210,14 +210,14 @@
             <ImageView
                 android:layout_width="22dp"
                 android:layout_height="22dp"
-                android:contentDescription="@string/google_login"
+                android:contentDescription="Google"
                 android:src="@drawable/ic_google" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:text="@string/google_login"
+                android:text="Google"
                 android:textColor="@color/fixpro_text_white"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -229,7 +229,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/ripple_button_secondary"
             android:stateListAnimator="@null"
-            android:text="@string/link_login"
+            android:text="Já tem conta? Entrar"
             android:textAllCaps="false"
             android:textColor="@color/fixpro_text_white"
             android:textSize="14sp"
@@ -245,7 +245,7 @@
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:lineSpacingExtra="2dp"
-            android:text="@string/terms_text"
+            android:text="Ao continuar, você concorda com nossos Termos de Uso e Política de Privacidade"
             android:textColor="@color/fixpro_text_hint"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"

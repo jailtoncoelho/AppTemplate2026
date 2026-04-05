@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical"
+    android:paddingBottom="24dp">
+
+    <!-- Handle drag pill -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:background="#40FFFFFF" />
+
+    <!-- Configurações e privacidade -->
+    <TextView
+        android:id="@+id/btnConfigMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="Configurações e privacidade"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1C1C28" />
+
+    <!-- Conta -->
+    <TextView
+        android:id="@+id/btnContaMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="Central de contas"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1C1C28" />
+
+    <!-- Notificações -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="Notificações"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1C1C28" />
+
+    <!-- Sair -->
+    <TextView
+        android:id="@+id/btnSairMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="Sair"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#1C1C28" />
+
+    <!-- Cancelar -->
+    <TextView
+        android:id="@+id/btnCancelarMenu"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:text="Cancelar"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+</LinearLayout>

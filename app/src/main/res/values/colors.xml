@@ -14,6 +14,7 @@
     <color name="fixpro_accent_teal">#FF6B35</color>
     <color name="fixpro_vibrant_cyan">#FFB347</color>
     <color name="fixpro_light_teal">#FFCC80</color>
+    <color name="fixpro_profile_actionbar">#1A1A28</color>
     <color name="fixpro_gradient_start">#121212</color>
     <color name="fixpro_gradient_center">#181828</color>
     <color name="fixpro_gradient_end">#1E1E2E</color>
