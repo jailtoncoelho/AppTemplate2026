@@ -28,4 +28,11 @@
         android:name="com.ifpr.androidapptemplate.ui.usuario.PerfilUsuarioFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_perfil_usuario" />
-</navigation>
+
+    <fragment
+        android:id="@+id/navigation_item"
+        android:name="com.ifpr.androidapptemplate.ui.item.CadastroItemFragment"
+        android:label="Itens"
+        tools:layout="@layout/fragment_cadastro_item" />
+
+    </navigation>
