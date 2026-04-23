@@ -34,7 +34,7 @@ class AiLogicFragment : Fragment() {
         generateButton = view.findViewById(R.id.btn_generate)
 
         model = Firebase.ai(backend = GenerativeBackend.googleAI())
-            .generativeModel("gemini-2.0-flash")
+            .generativeModel("gemini-3-flash-preview")
 
         generateButton.setOnClickListener {
             val prompt = promptInput.text.toString().trim()

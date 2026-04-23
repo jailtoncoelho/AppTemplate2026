@@ -29,12 +29,17 @@
             android:layout_height="wrap_content"
             android:text="Gerar resposta" />
 
-        <TextView
-            android:id="@+id/result_text"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Resultado aparecerá aqui"
-            android:textSize="16sp" />
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/result_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resultado aparecerá aqui"
+                android:textSize="16sp" />
+        </ScrollView>
     </LinearLayout>
 </LinearLayout>

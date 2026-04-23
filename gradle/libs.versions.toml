@@ -3,6 +3,7 @@ agp = "8.5.2"
 firebaseBom = "33.10.0"
 firebaseBomVersion = "34.10.0"
 glide = "4.16.0"
+googleFirebaseBom = "34.12.0"
 googleServices = "4.4.2"
 kotlin = "2.1.0"
 coreKtx = "1.15.0"
@@ -35,6 +36,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-bom-v34100 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+firebase-bom-v34120 = { module = "com.google.firebase:firebase-bom", version.ref = "googleFirebaseBom" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
