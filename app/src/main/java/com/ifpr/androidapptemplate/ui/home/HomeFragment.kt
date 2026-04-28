@@ -48,7 +48,6 @@ class HomeFragment : Fragment() {
                         else -> 0.0
                     }
 
-                    // 🔥 cria o card dinamicamente
                     val view = layoutInflater.inflate(R.layout.item_produto, null)
 
                     val textNome = view.findViewById<TextView>(R.id.textNome)
