@@ -33,19 +33,27 @@ class CadastroItemFragment : Fragment() {
 
     private fun salvarItem() {
 
-        val nome = binding.editNomeItem.text.toString()
-        val descricao = binding.editDescricaoItem.text.toString()
-        val preco = binding.editPrecoItem.text.toString()
+        val nome = binding.editNomeItem.text.toString().trim()
+        val descricao = binding.editDescricaoItem.text.toString().trim()
+        val precoTexto = binding.editPrecoItem.text.toString().trim()
 
-        if (nome.isEmpty() || descricao.isEmpty() || preco.isEmpty()) {
+        if (nome.isEmpty() || descricao.isEmpty() || precoTexto.isEmpty()) {
             Toast.makeText(context, "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // 🔥 CONVERSÃO CORRETA
+        val preco = precoTexto.toDoubleOrNull()
+
+        if (preco == null) {
+            Toast.makeText(context, "Preço inválido", Toast.LENGTH_SHORT).show()
             return
         }
 
         val item = hashMapOf(
             "nome" to nome,
             "descricao" to descricao,
-            "preco" to preco
+            "preco" to preco // ✅ AGORA É DOUBLE
         )
 
         db.collection("itens")
