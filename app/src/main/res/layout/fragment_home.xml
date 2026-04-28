@@ -1,31 +1,14 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#1E1E1E"
-    android:layout_margin="10dp">
+    android:layout_height="match_parent"
+    android:background="#121212">
 
-    <TextView
-        android:id="@+id/textNome"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/containerItens"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"/>
 
-    <TextView
-        android:id="@+id/textPreco"
-        android:textColor="#FF3B3B"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btnComprar"
-        android:text="Comprar"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#FF3B3B"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</LinearLayout>
+</ScrollView>
