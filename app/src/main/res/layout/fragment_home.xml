@@ -1,14 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212">
 
     <LinearLayout
-        android:id="@+id/containerItens"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp"/>
+        android:orientation="vertical">
+
+        <!-- 📍 LOCALIZAÇÃO -->
+        <TextView
+            android:id="@+id/currentAddressTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Obtendo localização..."
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="#1E1E1E" />
+
+        <!-- 🛒 LISTA DE PRODUTOS -->
+        <LinearLayout
+            android:id="@+id/containerItens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"/>
+
+    </LinearLayout>
 
 </ScrollView>
