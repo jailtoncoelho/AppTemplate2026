@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0B0B"
+    android:padding="16dp">
+
+    <!-- TÍTULO -->
+    <TextView
+        android:id="@+id/titleCadastroItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CADASTRO DE ITEM"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- LINHA VERMELHA DECORATIVA -->
+    <View
+        android:id="@+id/line"
+        android:layout_width="80dp"
+        android:layout_height="3dp"
+        android:background="#E10600"
+        app:layout_constraintTop_toBottomOf="@id/titleCadastroItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- NOME -->
+    <EditText
+        android:id="@+id/editNomeItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nome do item"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:backgroundTint="#E10600"
+        app:layout_constraintTop_toBottomOf="@id/line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+    <!-- DESCRIÇÃO -->
+    <EditText
+        android:id="@+id/editDescricaoItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Descrição"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:backgroundTint="#E10600"
+        app:layout_constraintTop_toBottomOf="@id/editNomeItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- PREÇO -->
+    <EditText
+        android:id="@+id/editPrecoItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Preço"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#888888"
+        android:backgroundTint="#E10600"
+        app:layout_constraintTop_toBottomOf="@id/editDescricaoItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"/>
+
+    <!-- BOTÃO -->
+    <Button
+        android:id="@+id/btnSalvarItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="SALVAR ITEM"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#E10600"
+        app:layout_constraintTop_toBottomOf="@id/editPrecoItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
