@@ -1,9 +1,11 @@
 package com.ifpr.androidapptemplate.ui.home
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.view.LayoutInflater
@@ -12,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.ifpr.androidapptemplate.R
@@ -25,9 +28,11 @@ class HomeFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    // 🔥 LOCALIZAÇÃO
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
+
+    private var currentLat = 0.0
+    private var currentLng = 0.0
 
     companion object {
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1
@@ -41,18 +46,17 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        // 🔥 INICIA LOCALIZAÇÃO
         inicializaLocalizacao()
-
-        // 🔥 CARREGA PRODUTOS
         carregarItens()
+
+        binding.btnMaps.setOnClickListener {
+            abrirGoogleMaps()
+        }
 
         return binding.root
     }
 
-    // =========================
-    // 🔴 LOCALIZAÇÃO
-    // =========================
+    // 📍 LOCALIZAÇÃO
 
     private fun inicializaLocalizacao() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
@@ -82,6 +86,8 @@ class HomeFragment : Fragment() {
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(result: LocationResult) {
                 result.lastLocation?.let { location ->
+                    currentLat = location.latitude
+                    currentLng = location.longitude
                     mostrarEndereco(location)
                 }
             }
@@ -106,7 +112,6 @@ class HomeFragment : Fragment() {
             val lista = geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
             val endereco = lista?.get(0)?.getAddressLine(0) ?: "Endereço não encontrado"
-
             binding.currentAddressTextView.text = endereco
 
         } catch (e: Exception) {
@@ -128,9 +133,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    // =========================
     // 🛒 FIREBASE
-    // =========================
 
     private fun carregarItens() {
 
@@ -155,9 +158,18 @@ class HomeFragment : Fragment() {
                     val textNome = view.findViewById<TextView>(R.id.textNome)
                     val textPreco = view.findViewById<TextView>(R.id.textPreco)
                     val btnComprar = view.findViewById<Button>(R.id.btnComprar)
+                    val imageView = view.findViewById<ImageView>(R.id.imageProduto)
 
                     textNome.text = nome
                     textPreco.text = "R$ %.2f".format(preco)
+
+                    val imageUrl = document.getString("imagem")
+
+                    if (!imageUrl.isNullOrEmpty()) {
+                        Glide.with(requireContext())
+                            .load(imageUrl)
+                            .into(imageView)
+                    }
 
                     btnComprar.setOnClickListener {
                         Toast.makeText(context, "Comprado: $nome", Toast.LENGTH_SHORT).show()
@@ -169,6 +181,27 @@ class HomeFragment : Fragment() {
             .addOnFailureListener {
                 Toast.makeText(context, "Erro ao carregar itens", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    // 🗺️ GOOGLE MAPS
+
+    private fun abrirGoogleMaps() {
+
+        if (currentLat == 0.0 && currentLng == 0.0) {
+            Toast.makeText(context, "Aguardando localização...", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val uri = Uri.parse("geo:$currentLat,$currentLng?q=$currentLat,$currentLng")
+
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        intent.setPackage("com.google.android.apps.maps")
+
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(context, "Google Maps não instalado", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {

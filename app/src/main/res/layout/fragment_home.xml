@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,9 +7,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
-        <!-- 📍 LOCALIZAÇÃO -->
+        <!-- 📍 ENDEREÇO -->
         <TextView
             android:id="@+id/currentAddressTextView"
             android:layout_width="match_parent"
@@ -16,16 +18,22 @@
             android:text="Obtendo localização..."
             android:textColor="#FFFFFF"
             android:textSize="14sp"
-            android:padding="12dp"
-            android:background="#1E1E1E" />
+            android:padding="8dp"/>
 
-        <!-- 🛒 LISTA DE PRODUTOS -->
+        <!-- 🗺️ BOTÃO MAPS -->
+        <Button
+            android:id="@+id/btnMaps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Abrir no Google Maps"
+            android:layout_marginBottom="10dp"/>
+
+        <!-- 🛒 LISTA -->
         <LinearLayout
             android:id="@+id/containerItens"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp"/>
+            android:orientation="vertical"/>
 
     </LinearLayout>
 

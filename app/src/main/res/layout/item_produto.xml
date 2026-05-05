@@ -1,34 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="#1E1E1E"
     android:padding="16dp"
-    android:layout_marginBottom="12dp">
+    android:background="#1E1E1E"
+    android:layout_margin="10dp">
+
+    <ImageView
+        android:id="@+id/imageProduto"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/textNome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/textPreco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textColor="#FF3B3B"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btnComprar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Comprar"
         android:textColor="#FFFFFF"
         android:backgroundTint="#FF3B3B"
-        android:layout_marginTop="10dp"/>
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
