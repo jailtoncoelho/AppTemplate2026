@@ -59,17 +59,22 @@ class HomeFragment : Fragment() {
     // 📍 LOCALIZAÇÃO
 
     private fun inicializaLocalizacao() {
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
 
-        if (ActivityCompat.checkSelfPermission(
+        fusedLocationClient =
+            LocationServices.getFusedLocationProviderClient(requireActivity())
+
+        if (
+            ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
+
             requestPermissions(
                 arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                 LOCATION_PERMISSION_REQUEST_CODE
             )
+
         } else {
             iniciarAtualizacaoLocalizacao()
         }
@@ -84,16 +89,21 @@ class HomeFragment : Fragment() {
         }
 
         locationCallback = object : LocationCallback() {
+
             override fun onLocationResult(result: LocationResult) {
+
                 result.lastLocation?.let { location ->
+
                     currentLat = location.latitude
                     currentLng = location.longitude
+
                     mostrarEndereco(location)
                 }
             }
         }
 
-        if (ActivityCompat.checkSelfPermission(
+        if (
+            ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
@@ -107,15 +117,32 @@ class HomeFragment : Fragment() {
     }
 
     private fun mostrarEndereco(location: Location) {
-        try {
-            val geocoder = Geocoder(requireContext(), Locale.getDefault())
-            val lista = geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
-            val endereco = lista?.get(0)?.getAddressLine(0) ?: "Endereço não encontrado"
+        // evita crash quando a tela já foi destruída
+        if (_binding == null) return
+
+        try {
+
+            val geocoder = Geocoder(requireContext(), Locale.getDefault())
+
+            val lista = geocoder.getFromLocation(
+                location.latitude,
+                location.longitude,
+                1
+            )
+
+            val endereco =
+                lista?.get(0)?.getAddressLine(0)
+                    ?: "Endereço não encontrado"
+
             binding.currentAddressTextView.text = endereco
 
         } catch (e: Exception) {
-            binding.currentAddressTextView.text = "Erro ao obter endereço"
+
+            if (_binding != null) {
+                binding.currentAddressTextView.text =
+                    "Erro ao obter endereço"
+            }
         }
     }
 
@@ -124,11 +151,23 @@ class HomeFragment : Fragment() {
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            if (
+                grantResults.isNotEmpty() &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED
+            ) {
+
                 iniciarAtualizacaoLocalizacao()
+
             } else {
-                Toast.makeText(context, "Permissão negada", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    context,
+                    "Permissão negada",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
@@ -145,6 +184,8 @@ class HomeFragment : Fragment() {
 
                 for (document in result) {
 
+                    val documentId = document.id
+
                     val nome = document.getString("nome") ?: ""
 
                     val preco = when (val valor = document.get("preco")) {
@@ -153,33 +194,88 @@ class HomeFragment : Fragment() {
                         else -> 0.0
                     }
 
-                    val view = layoutInflater.inflate(R.layout.item_produto, null)
+                    val view =
+                        layoutInflater.inflate(
+                            R.layout.item_produto,
+                            null
+                        )
 
-                    val textNome = view.findViewById<TextView>(R.id.textNome)
-                    val textPreco = view.findViewById<TextView>(R.id.textPreco)
-                    val btnComprar = view.findViewById<Button>(R.id.btnComprar)
-                    val imageView = view.findViewById<ImageView>(R.id.imageProduto)
+                    val textNome =
+                        view.findViewById<TextView>(R.id.textNome)
+
+                    val textPreco =
+                        view.findViewById<TextView>(R.id.textPreco)
+
+                    val btnComprar =
+                        view.findViewById<Button>(R.id.btnComprar)
+
+                    val btnExcluir =
+                        view.findViewById<Button>(R.id.btnExcluir)
+
+                    val imageView =
+                        view.findViewById<ImageView>(R.id.imageProduto)
 
                     textNome.text = nome
                     textPreco.text = "R$ %.2f".format(preco)
 
-                    val imageUrl = document.getString("imagem")
+                    val imageUrl =
+                        document.getString("imagem")
 
                     if (!imageUrl.isNullOrEmpty()) {
+
                         Glide.with(requireContext())
                             .load(imageUrl)
                             .into(imageView)
                     }
 
+                    // BOTÃO COMPRAR
+
                     btnComprar.setOnClickListener {
-                        Toast.makeText(context, "Comprado: $nome", Toast.LENGTH_SHORT).show()
+
+                        Toast.makeText(
+                            context,
+                            "Comprado: $nome",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    // BOTÃO EXCLUIR
+
+                    btnExcluir.setOnClickListener {
+
+                        db.collection("itens")
+                            .document(documentId)
+                            .delete()
+                            .addOnSuccessListener {
+
+                                Toast.makeText(
+                                    context,
+                                    "$nome deletado",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                                carregarItens()
+                            }
+                            .addOnFailureListener {
+
+                                Toast.makeText(
+                                    context,
+                                    "Erro ao deletar",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
                     }
 
                     binding.containerItens.addView(view)
                 }
             }
             .addOnFailureListener {
-                Toast.makeText(context, "Erro ao carregar itens", Toast.LENGTH_SHORT).show()
+
+                Toast.makeText(
+                    context,
+                    "Erro ao carregar itens",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
     }
 
@@ -188,24 +284,45 @@ class HomeFragment : Fragment() {
     private fun abrirGoogleMaps() {
 
         if (currentLat == 0.0 && currentLng == 0.0) {
-            Toast.makeText(context, "Aguardando localização...", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                context,
+                "Aguardando localização...",
+                Toast.LENGTH_SHORT
+            ).show()
+
             return
         }
 
-        val uri = Uri.parse("geo:$currentLat,$currentLng?q=$currentLat,$currentLng")
+        val uri =
+            Uri.parse(
+                "geo:$currentLat,$currentLng?q=$currentLat,$currentLng"
+            )
 
         val intent = Intent(Intent.ACTION_VIEW, uri)
+
         intent.setPackage("com.google.android.apps.maps")
 
         try {
+
             startActivity(intent)
+
         } catch (e: Exception) {
-            Toast.makeText(context, "Google Maps não instalado", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(
+                context,
+                "Google Maps não instalado",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
     override fun onDestroyView() {
+
         super.onDestroyView()
+
+        fusedLocationClient.removeLocationUpdates(locationCallback)
+
         _binding = null
     }
 }
